@@ -14,9 +14,9 @@ movieCards = soup.find_all('li', class_ = 'poster-card poster-card__fluid browse
 dict = []
 
 #For each card in the movieCards collected,
-for cards in movieCards:
+for card in movieCards:
     #collect all the information for each movie,
-    movieTitle = cards.find('span', class_ = 'heading-style-1 browse-movielist--title poster-card--title').text
+    movieTitle = card.find('span', class_ = 'heading-style-1 browse-movielist--title poster-card--title').text
 
     #add the information to a dictionary
     case = {
