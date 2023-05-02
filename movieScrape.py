@@ -13,19 +13,25 @@ movieCards = soup.find_all('li', class_ = 'poster-card poster-card__fluid browse
 
 dict = []
 
-#For loop iterates over all of the collected movieCards and the info collected to their respective attribute in the dictionary
-for cards in movieCards:
-    movieTitle = cards.find('span', class_ = 'heading-style-1 browse-movielist--title poster-card--title').text
+#For each card in the movieCards collected,
+for card in movieCards:
+    #collect all the information for each movie,
+    movieTitle = card.find('span', class_ = 'heading-style-1 browse-movielist--title poster-card--title').text
+
+    #add the information to a dictionary
     case = {
-        "title": {movieTitle},
+        "title": movieTitle,
         "date": "",
         "time": "",
         "description": "",
         "theater": "",
         "location": ""
     }
+    
+    #then append each dictionary to the list
     dict.append(case)
 
+#Convert the python dict in to a json string then write the json string to a json file
 jsonString = json.dumps(dict, indent = 4, default = str)
 
 with open("movies.json", "w") as f:
